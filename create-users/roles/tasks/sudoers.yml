@@ -1,15 +1,19 @@
 ---
 - name: Edit sudoers file with NOPASSWD for wheel and sudo group
-    lineinfile:
+  - lineinfile:
       dest: /etc/sudoers
       regexp: "^%sudo   ALL=(ALL:ALL) ALL"
       line: "sudo   ALL=(ALL:ALL) NOPASSWED: ALL"
       when: ansible_facts['os_family']|lower == 'debian'
-
+    
+  - lineinfile:
+      dest: /etc/sudoers    
       regexp: "^%wheel  ALL=(ALL)       ALL"
       line: "%wheel  ALL=(ALL)       NOPASSWD: ALL"
       when: ansible_facts['os_family']|lower == 'redhat'
 
+  - lineinfile:
+      dest: /etc/sudoers
       regexp: "^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL"
       line: "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  
       when: ansible_facts['os_family']|lower == 'suse'

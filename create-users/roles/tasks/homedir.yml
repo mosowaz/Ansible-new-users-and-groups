@@ -1,3 +1,9 @@
 ---
-- name: Modify mode for users' home directory
-    shell: chmod 750 /home/{{ item.name }}
+- name: Modify permissions for users' home directory
+    ansible.builtin.file: 
+      path: /home/{{ item.name }}
+      state: directory
+      group: sysadmin
+      mode: '750'
+      recurse: true
+      
