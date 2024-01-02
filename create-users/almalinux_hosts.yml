@@ -3,6 +3,11 @@
   become: true
   tasks:  
 
+  - name: Creating sysadmin group
+    group:
+      name: sysadmin
+      state: present
+
   - name: Adding local sysadmin users to Almalinux server
     ansible.builtin.user:
       name: "{{ item.name }}"
@@ -21,7 +26,7 @@
       - { name: 'user2', comment: 'User Two', password: '$6$Zfk/nYUxBtX399Od$PnmaXxsowszta54kwGNOalEK9k/IWldmoYeNqb35VmTEQXNOy55kZqeek33RYinmapxfu/pBbWPvwYSV0V2Q11' }
       - { name: 'user3', comment: 'User Three', password: '$6$7gRl1rjJAq6Ny6dN$dcVjBt8n2E2woR72BiOs6mgt.Cw9r5g9XBr9nd0eGVBMhD2N6Pg5r/1ChXKpfyke/bSsOgzaqi8e.arXFiR1J/' }
       - { name: 'user4', comment: 'User Four', password: '$6$s.wNJPmqrLXhY2lc$14piudELZdilhLWPv5tyhlO6Aucj/b5BrgGL.r9hwNzzCmJXy0oEsagtlGSvSvTz4gnUwb9tLL5toWsmKU/Wp0' }
-      - { name: 'user5', comment: 'User Five', password: '$6$i1zRWwrP9V6TUR11$BYU7lF2HE/.AaVEn4wIcC9S47iXagc4gDaFWX6hFrXPOGJ7JlAXeGvpMq4Jfh33sBvM1W2/OkKhQiPI/yVOL80' } 
-        
+      - { name: 'user5', comment: 'User Five', password: '$6$i1zRWwrP9V6TUR11$BYU7lF2HE/.AaVEn4wIcC9S47iXagc4gDaFWX6hFrXPOGJ7JlAXeGvpMq4Jfh33sBvM1W2/OkKhQiPI/yVOL80' }     
+
   - name: Editing almalinux sudoers file with NOPASSWD for wheel group      
     include_tasks: roles/tasks/almalinux-sudoers.yml

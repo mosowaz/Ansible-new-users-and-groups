@@ -3,6 +3,11 @@
   become: true
   tasks:  
 
+  - name: Creating sysadmin group
+    group:
+      name: sysadmin
+      state: present
+
   - name: Adding local sysadmin users to Ubuntu or Debian base servers
     ansible.builtin.user:
       name: "{{ item.name }}"

@@ -1,8 +1,0 @@
-- name: Modifying permissions for users' home directory
-    ansible.builtin.file: 
-      path: /home/{{ item.name }}
-      state: directory
-      group: sysadmin
-      mode: '750'
-      recurse: true
-      

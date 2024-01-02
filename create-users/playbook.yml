@@ -8,4 +8,3 @@
   - name: Importing Ubuntu playbook
     import_playbook: ubuntu_hosts.yml
 
-# - include_tasks: roles/tasks/homedir.yml
