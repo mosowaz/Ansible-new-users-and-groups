@@ -1,29 +1,11 @@
 ---
-- hosts: all
-  become: true
-  tasks:  
+  - name: Importing almalinux playbook 
+    import_playbook: almalinux_hosts.yml
+  
+  - name: Importing SUSE playbook    
+    import_playbook: suse_hosts.yml
 
-  - name: Add local admin users to servers
-    ansible.builtin.user:
-      name: "{{ item.name }}"
-      password: "{{ item.password }}"
-      comment: "{{ item.comment }}"
-      group: sudo
-      when: ansible_facts['os_family']|lower == 'debian'
-      group: wheel
-      when: ansible_facts['os_family']|lower == 'redhat' or ansible_facts['os_family']|lower == 'suse'
-      groups: sysadmin
-      append: yes
-      shell: /bin/bash
-      state: present
-      generate_ssh_key: yes
-      ssh_key_bits: 2048
-      ssh_key_file: .ssh/id_rsa
-    loop:
-      - { name: 'user1', comment: 'User One', password: '$6$ljz8gcCPVMlL2kwT$Xj2X9fUFXY0nrF9/V84ngYf4S9ZRKbaYEBj49C40MOOQHiWFKOsGZzWfqsT1bDg7jUiSFN2Y68Xc4LnjEOsww.' }
-      - { name: 'user2', comment: 'User Two', password: '$6$Zfk/nYUxBtX399Od$PnmaXxsowszta54kwGNOalEK9k/IWldmoYeNqb35VmTEQXNOy55kZqeek33RYinmapxfu/pBbWPvwYSV0V2Q11' }
-      - { name: 'user3', comment: 'User Three', password: '$6$7gRl1rjJAq6Ny6dN$dcVjBt8n2E2woR72BiOs6mgt.Cw9r5g9XBr9nd0eGVBMhD2N6Pg5r/1ChXKpfyke/bSsOgzaqi8e.arXFiR1J/' }
-      - { name: 'user4', comment: 'User Four', password: '$6$s.wNJPmqrLXhY2lc$14piudELZdilhLWPv5tyhlO6Aucj/b5BrgGL.r9hwNzzCmJXy0oEsagtlGSvSvTz4gnUwb9tLL5toWsmKU/Wp0' }
-      - { name: 'user5', comment: 'User Five', password: '$6$i1zRWwrP9V6TUR11$BYU7lF2HE/.AaVEn4wIcC9S47iXagc4gDaFWX6hFrXPOGJ7JlAXeGvpMq4Jfh33sBvM1W2/OkKhQiPI/yVOL80' } 
-  - import_tasks: /roles/tasks/homedir.yml
-  - import_tasks: /roles/tasks/sudoers.yml
+  - name: Importing Ubuntu playbook
+    import_playbook: ubuntu_hosts.yml
+
+# - include_tasks: roles/tasks/homedir.yml

@@ -1,0 +1,5 @@
+#  Editing sudoers file with NOPASSWD for wheel group
+- lineinfile:
+    dest: /etc/sudoers
+    regexp: "^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL"
+    line: "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  

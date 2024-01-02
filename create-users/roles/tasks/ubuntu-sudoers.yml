@@ -1,0 +1,6 @@
+# Editing ubuntu sudoers file with NOPASSWD for sudo group
+  - lineinfile:
+      dest: /etc/sudoers
+      regexp: "^%sudo   ALL=(ALL:ALL) ALL"
+      line: "sudo   ALL=(ALL:ALL) NOPASSWD: ALL"
+    

@@ -1,0 +1,6 @@
+# Editing almalinux sudoers file with NOPASSWD for wheel group
+- lineinfile:
+    dest: /etc/sudoers    
+    regexp: "^%wheel  ALL=(ALL)       ALL"
+    line: "%wheel  ALL=(ALL)       NOPASSWD: ALL"
+  

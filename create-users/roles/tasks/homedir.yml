@@ -1,5 +1,4 @@
----
-- name: Modify permissions for users' home directory
+- name: Modifying permissions for users' home directory
     ansible.builtin.file: 
       path: /home/{{ item.name }}
       state: directory

@@ -1,7 +1,13 @@
-myhosts:
+almalinux_hosts:
   hosts:
     almalinux:
-    opensuse1:
-    opensuse2:
+    
+ubuntu_hosts:
+  hosts:
     ubuntu2:
     localhost:
+
+suse_hosts:
+  hosts:
+    opensuse1:
+    opensuse2:

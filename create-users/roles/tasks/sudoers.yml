@@ -1,5 +1,4 @@
----
-- name: Edit sudoers file with NOPASSWD for wheel and sudo group
+- name: Editing sudoers file with NOPASSWD for wheel and sudo group
   - lineinfile:
       dest: /etc/sudoers
       regexp: "^%sudo   ALL=(ALL:ALL) ALL"
