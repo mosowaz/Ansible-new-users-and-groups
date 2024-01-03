@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Removing users from the system
+    user:
+      name: "{{ item }}"
+      state: absent
+      remove: true
+      force: true
+    loop: 
+      - user1
+      - user2
+      - user3
+      - user4
+      - user5

@@ -1,0 +1,4 @@
+# sysadmin group and secondary groups
+- group:
+    name: sysadmin
+    state: present
