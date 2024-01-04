@@ -1,0 +1,12 @@
+- hosts: all
+  become: true
+  tasks:
+
+    - name: creating groups
+      group: 
+        name: "{{ item }}"
+        state: present
+      loop:
+      - sysadmin
+      - storageadmin
+      - localuser 

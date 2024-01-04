@@ -1,0 +1,13 @@
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Removing groups group(s) from all host(s)
+    group:
+      name: "{{ item }}"
+      state: absent
+    loop:
+      - sysadmin
+      - storageadmin
+      - localuser
+

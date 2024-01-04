@@ -1,4 +1,5 @@
----
+- import_playbook: groups.yml
+
 - hosts: all
   become: true
   tasks:
@@ -6,9 +7,6 @@
   - name: Importing users' variables from file
     include_vars:
       file: roles/vars.yml
-
-  - name: Creating primary group
-    include_tasks: roles/tasks/sysadmin.yml
       
   - name: Adding local sysadmin users to multiple distro servers
     ansible.builtin.user:
@@ -23,7 +21,11 @@
       ssh_key_bits: 2048
       ssh_key_file: .ssh/id_rsa
     loop: "{{ users_list }}"
-        
+  
+  - name: Changing users' home directory permission mode
+    shell: chmod 750 /home/{{ item.name }}
+    loop: "{{ users_list }}"  
+
   - name: Editing all sudoers files to NOPASSWD for sysadmin group      
     include_tasks: roles/tasks/sudoers.yml
 
