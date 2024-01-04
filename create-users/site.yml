@@ -13,8 +13,9 @@
       name: "{{ item.name }}"
       password: "{{ item.password }}"
       comment: "{{ item.comment }}"
-      update_password: on_create
       group: sysadmin
+      groups: storageadmin,localuser
+      append: yes
       shell: /bin/bash
       state: present
       generate_ssh_key: yes
