@@ -1,4 +1,4 @@
-# Editing almalinux sudoers file with NOPASSWD for sysadmin group
+# Adding sysadmin group with NOPASSWD to almalinux sudoers file
 - lineinfile:
     dest: /etc/sudoers    
     line: "%sysadmin ALL=(ALL:ALL) NOPASSWD: ALL"
