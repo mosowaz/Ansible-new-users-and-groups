@@ -1,6 +1,6 @@
 # Ansible playbooks
 
-Creating local users and automating them to multiple servers.
+Creating local users and groups on multiple remote servers.
 
 ## Directory structure
 ```
